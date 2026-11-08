@@ -102,6 +102,15 @@ Open any built `index.html` in a browser to preview it (click to hear the score;
 
 `plugins/animate/skills/animate/examples/history-of-ai/` is a complete 60-second cut-paper piece: 15 eras from Turing's "Can machines think?" (1950) to Claude Code (2025), a small orange "spark" that gains a ray each era, 13 shape-morph transitions, one hard cut on the payoff, and a synthesized score. Build it with `node plugins/animate/skills/animate/tools/build.mjs plugins/animate/skills/animate/examples/history-of-ai`, then export it.
 
+## Releases
+
+`main` holds only `release: vX.Y.Z` commits (one per release, tagged); all work goes to `dev`. A release squashes `dev` onto `main`, bumps the version in `plugins/animate/.claude-plugin/plugin.json`, tags it and back-merges into `dev`. It runs every Monday through `.github/workflows/release.yml` (skipped when only tooling or top-level docs changed), on demand from the Actions tab (pick patch, minor or major), or locally from an up-to-date `dev` checkout:
+
+```bash
+node scripts/release.mjs --dry-run         # show the plan
+node scripts/release.mjs --bump minor      # release
+```
+
 ## License
 
 MIT
